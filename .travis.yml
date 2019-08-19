@@ -7,14 +7,14 @@ before_install:
 script:
   - docker run -e CI=true joaogardenberg/testing-multi-docker-ci npm test
 after_success:
-  - docker build -t joaogardenberg/docker-course-client ./client
-  - docker build -t joaogardenberg/docker-course-nginx ./nginx
-  - docker build -t joaogardenberg/docker-course-api ./api
-  - docker build -t joaogardenberg/docker-course-worker ./worker
+  - docker build -t joaogardenberg/docker-course/client ./client
+  - docker build -t joaogardenberg/docker-course/nginx ./nginx
+  - docker build -t joaogardenberg/docker-course/api ./api
+  - docker build -t joaogardenberg/docker-course/worker ./worker
   # Log into the docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push joaogardenberg/docker-course-client
-  - docker push joaogardenberg/docker-course-nginx
-  - docker push joaogardenberg/docker-course-api
-  - docker push joaogardenberg/docker-course-worker
+  - docker push joaogardenberg/docker-course/client
+  - docker push joaogardenberg/docker-course/nginx
+  - docker push joaogardenberg/docker-course/api
+  - docker push joaogardenberg/docker-course/worker
