@@ -4,21 +4,25 @@
     "name": "client",
     "image": "joaogardenberg/docker-course-client",
     "hostname": "client",
+    "memory": 128,
     "essential": false
   }, {
     "name": "api",
     "image": "joaogardenberg/docker-course-api",
     "hostname": "api",
+    "memory": 128,
     "essential": false
   }, {
     "name": "worker",
     "image": "joaogardenberg/docker-course-worker",
     "hostname": "worker",
+    "memory": 128,
     "essential": false
   }, {
     "name": "nginx",
     "image": "joaogardenberg/docker-course-nginx",
     "hostname": "nginx",
+    "memory": 128,
     "essential": true,
     "portMappings": [{
       "hostPort": 80,
