@@ -18,3 +18,17 @@ after_success:
   - docker push joaogardenberg/docker-course-nginx
   - docker push joaogardenberg/docker-course-api
   - docker push joaogardenberg/docker-course-worker
+deploy:
+  provider: elasticbeanstalk
+  region: sa-east-1
+  app: testing-multi-docker-ci
+  env: TestingMultiDockerCi-env
+  bucket_name: elasticbeanstalk-sa-east-1-707041792727
+  bucker_path: docker-course
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+

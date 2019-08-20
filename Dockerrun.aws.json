@@ -1,0 +1,32 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [{
+    "name": "client",
+    "image": "joaogardenberg/docker-course-client",
+    "hostname": "client",
+    "essential": false
+  }, {
+    "name": "api",
+    "image": "joaogardenberg/docker-course-api",
+    "hostname": "api",
+    "essential": false
+  }, {
+    "name": "worker",
+    "image": "joaogardenberg/docker-course-worker",
+    "hostname": "worker",
+    "essential": false
+  }, {
+    "name": "nginx",
+    "image": "joaogardenberg/docker-course-nginx",
+    "hostname": "nginx",
+    "essential": true,
+    "portMappings": [{
+      "hostPort": 80,
+      "containerPort": 80
+    }],
+    "links": [
+      "client",
+      "api"
+    ]
+  }]
+}
